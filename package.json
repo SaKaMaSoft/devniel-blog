@@ -1,0 +1,24 @@
+{
+  "name": "blog-devniel",
+  "version": "1.0.0",
+  "description": "Mi blog",
+  "main": "Perro.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devnieL/devniel-blog.git"
+  },
+  "author": "DANIEL FLORES",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devnieL/devniel-blog/issues"
+  },
+  "homepage": "https://github.com/devnieL/devniel-blog#readme",
+  "dependencies": {
+    "audio-loader": "^0.6.0",
+    "audio-play": "^2.1.0"
+  }
+}
