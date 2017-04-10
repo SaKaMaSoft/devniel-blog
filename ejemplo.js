@@ -12,14 +12,14 @@ fs.readFile("README", "utf-8", function(err, data){ // #2
     }
 
     // Mostrar data
-    console.log(data);
+    console.log("DATA--->", data);
 
 });
 
 console.log("DANIEL"); // #3
 
-
 var perro = new Perro("perro peruano");
+
 perro.ladra();
 
 perro.mover(
@@ -32,9 +32,29 @@ perro.mover(
         }else{
             console.log("MI PERRO ACABÓ --> ", data1 , data2, data3, data4, data5);
         }
-
     }
 );
+
+// perro.habla("CHAU") --> { on : function(event) { } }
+// method chain
+
+var saludoPerro = perro.habla("CHAU");
+
+saludoPerro.on("finish", function(err){
+    console.log("por fin acabado");
+});
+
+saludoPerro.on("error", function(err){
+    console.error(err);
+})
+
+/*
+perro.habla2({
+    mensaje : "CHAU2",
+    onFinish : function(err){
+        console.log("ACABADO2");
+    }
+});*/
 
 perro.ladra();
 perro.ladra();

@@ -10,7 +10,6 @@ class Category {
 
     }
 
-
     // ID
 
     get id(){

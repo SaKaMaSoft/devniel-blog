@@ -2,6 +2,9 @@ const play = require('audio-play');
 const load = require('audio-loader');
 const context = require('audio-context');
 
+// JavaScript 
+// EcmaScript 6
+
 class Perro {
 
     constructor(nombre){
@@ -14,7 +17,6 @@ class Perro {
     }
 
     mover(parte, callback){
-
         switch(parte){
 
             case "COLA":
@@ -40,6 +42,38 @@ class Perro {
 
                 callback(ERROR);
         }
+    }
+
+    /*
+
+    perro.habla("CHAU").on("finish", function(err){
+        console.log("ACABADO");
+    });     
+    */
+
+    habla(mensaje){
+
+        console.log("PERRO HABLANDO : " + mensaje);
+
+        return {
+            on : function(evento, callback){
+
+                switch(evento){
+
+                    case "finish":
+                        console.log("ACABADO-----");
+                        callback();
+                        break;
+
+                    case "error":
+                        console.log("Ocurrió un error");
+                        callback({ message : "ERROR"});
+                        break;
+                }
+
+            }
+        }
+
     }
 
 }

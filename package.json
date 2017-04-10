@@ -17,9 +17,11 @@
     "url": "https://github.com/devnieL/devniel-blog/issues"
   },
   "homepage": "https://github.com/devnieL/devniel-blog#readme",
+  
   "dependencies": {
     "audio-loader": "^0.6.0",
     "audio-play": "^2.1.0",
     "mocha": "^3.2.0"
   }
+
 }
