@@ -1,3 +1,9 @@
+/**
+ *  CLASE
+ * 
+ * @class Post
+ */
+
 class Post {
 
     constructor(data){
