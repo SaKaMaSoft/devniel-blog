@@ -31,6 +31,14 @@ class User {
 
     }
 
+    toJSON(){
+        return {
+            id : this.id,
+            name : this.name,
+            username : this.username
+        }
+    }
+
     save(callback){
 
         var self = this;
@@ -67,6 +75,11 @@ class User {
 
     }
 
+    /*
+        var user = new User();
+        user.delete();
+        
+    */
     delete(callback){
 
         var self = this;
@@ -94,6 +107,11 @@ class User {
             });
 
         });
+
+    }
+
+    // User.delete
+    static delete(callback){
 
     }
 
@@ -128,6 +146,43 @@ class User {
 
                 var rows = result.rows;
                 callback(null, rows);
+
+            });
+
+        });
+
+    }
+
+    static getByUsername(username, callback){
+        
+        var self = this;
+        
+        pool.connect(function(err, client, done){
+
+            if(err){
+                console.error(err);
+                return callback(err);
+            }
+
+            client.query(`
+                SELECT * FROM blog.user
+                WHERE username = $1
+            `, [username], function(err, result){
+
+                if(err){
+                    console.error(err);
+                    callback(err);
+                    return;
+                }
+
+                if(result.rows.length == 0){
+                    return callback({
+                        message : "El usuario no existe"
+                    })
+                }
+                
+                var rows = result.rows;
+                callback(null, rows[0]);
 
             });
 
