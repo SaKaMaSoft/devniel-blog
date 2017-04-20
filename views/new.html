@@ -16,9 +16,21 @@
 
     </style>
 
+<script type='text/javascript'>
+
+    var onSubmit = function(){
+
+        alert(":o");
+    }
+
+</script>
+
 </head>
+
+
+
 <body>
-    <form action="posts" method="POST">
+    <form id='form' onSubmit="onSubmit" action="posts" method="POST">
         <input placeholder="título" type='text' name="title" />
         <textarea placeholder="contenido" name="content">
         </textarea>

@@ -5,9 +5,20 @@ class Views {
     }
 
     static home(req, res){
-        res.render('index', {
-            name : "Home"
-        });
+
+        console.log("SESSION VARS: ", req.session);
+        console.log("SESSION VARS USER : ", req.session.user);
+
+        if(req.session.user){
+            res.render('index', {
+                name : req.session.user.name
+            });
+        }else{
+            res.render('index', {
+                name : 'HOME'
+            });
+        }
+        
     }
 
 }

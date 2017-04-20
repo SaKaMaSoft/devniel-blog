@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var morgan = require('morgan')
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 /**
  * Controllers
@@ -18,13 +19,17 @@ app.set('view engine', 'html');
 
 app.use(morgan('dev'));
 
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+
+// POST 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
 
-app.use(function(req, res, next){
+
+var TokenMiddleware = function(req, res, next){
 
     if(req.get('x-mi-token') == '1234567890'){
         return next();
@@ -34,15 +39,18 @@ app.use(function(req, res, next){
             message : "YOU SHALL NOT PASS"
         });
     }
-})
-// Routes
-app.get("/admin", Views.admin)
-app.post("/auth/login", Auth.login);
+};
 
-app.post("/api/users", Users.create);
-app.get('/', Views.home);
-app.get('/posts', Posts.list);
-app.post('/posts', Posts.create);
+// Routes - Public
+app.get('/',            Views.home);
+app.get("/admin",       Views.admin)
+app.post("/auth/login", Auth.login);
+app.get('/auth/logout', Auth.logout);
+app.get('/posts',       Posts.list);
+
+// Routes - Private
+app.post("/api/users",  TokenMiddleware, Users.create);
+app.post('/posts',      TokenMiddleware, Posts.create);
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')

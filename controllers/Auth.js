@@ -41,12 +41,21 @@ class Auth {
 
             delete user.password;
 
-            return res.status(200).send({
+            req.session.user = user;
+
+            /*return res.status(200).send({
                 message : "Bienvenido",
                 data : user
-            })
+            })*/
+
+            return res.redirect("/");
         })
 
+    }
+
+    static logout(req, res){
+        req.session.user = null;
+        res.redirect("/");
     }
 
 }
