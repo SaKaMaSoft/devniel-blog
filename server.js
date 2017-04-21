@@ -12,6 +12,7 @@ var Views = require("./controllers/Views");
 var Auth = require("./controllers/Auth");
 var Posts = require("./controllers/Posts");
 var Users = require("./controllers/Users");
+var Facebook = require("./controllers/Facebook");
 
 app.set('views', './views');
 app.engine('html', require('ejs').renderFile);
@@ -47,6 +48,9 @@ app.get("/admin",       Views.admin)
 app.post("/auth/login", Auth.login);
 app.get('/auth/logout', Auth.logout);
 app.get('/posts',       Posts.list);
+
+app.get('/api/webhooks/facebook', Facebook.connect);
+app.post('/api/webhooks/facebook', Facebook.onMessage);
 
 // Routes - Private
 app.post("/api/users",  TokenMiddleware, Users.create);
