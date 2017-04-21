@@ -29,6 +29,10 @@ class Facebook {
 
         var request = require("request");
 
+        /** PROCESAR CON WATSON */
+        /** ---> CAPTURAR RESPUESTA DE WATSON */
+        /** ------> ENVIAR RESPUESTA DE WATSON A FACEBOOK */
+        
         request({
             url:  "https://graph.facebook.com/v2.6/me/messages?access_token=" + ACCESS_TOKEN,
             json : true,

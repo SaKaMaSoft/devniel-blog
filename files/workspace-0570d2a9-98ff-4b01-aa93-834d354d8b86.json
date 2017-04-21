@@ -1,0 +1,203 @@
+{
+    "name": "MI WORKSPACE",
+    "created": "2017-04-20T00:01:53.762Z",
+    "intents": [{
+        "intent": "atender_ticket",
+        "created": "2017-04-20T00:10:09.452Z",
+        "updated": "2017-04-20T00:10:09.452Z",
+        "examples": [{
+            "text": "ayúdame",
+            "created": "2017-04-20T00:10:09.452Z",
+            "updated": "2017-04-20T00:10:09.452Z"
+        }, {
+            "text": "help",
+            "created": "2017-04-20T00:10:09.452Z",
+            "updated": "2017-04-20T00:10:09.452Z"
+        }, {
+            "text": "se malogró mi máquina",
+            "created": "2017-04-20T00:10:09.452Z",
+            "updated": "2017-04-20T00:10:09.452Z"
+        }, {
+            "text": "tengo un problema",
+            "created": "2017-04-20T00:10:09.452Z",
+            "updated": "2017-04-20T00:10:09.452Z"
+        }, {
+            "text": "ticket",
+            "created": "2017-04-20T00:10:09.452Z",
+            "updated": "2017-04-20T00:10:09.452Z"
+        }],
+        "description": null
+    }, {
+        "intent": "ver_hora",
+        "created": "2017-04-20T00:07:28.470Z",
+        "updated": "2017-04-20T00:09:35.609Z",
+        "examples": [{
+            "text": "dame la hora",
+            "created": "2017-04-20T00:07:28.470Z",
+            "updated": "2017-04-20T00:07:28.470Z"
+        }, {
+            "text": "la hora",
+            "created": "2017-04-20T00:07:28.470Z",
+            "updated": "2017-04-20T00:07:28.470Z"
+        }, {
+            "text": "muéstrame la hora",
+            "created": "2017-04-20T00:07:28.470Z",
+            "updated": "2017-04-20T00:07:28.470Z"
+        }, {
+            "text": "ora",
+            "created": "2017-04-20T00:07:28.470Z",
+            "updated": "2017-04-20T00:07:28.470Z"
+        }, {
+            "text": "que hora es",
+            "created": "2017-04-20T00:09:35.609Z",
+            "updated": "2017-04-20T00:09:35.609Z"
+        }, {
+            "text": "qué hora es",
+            "created": "2017-04-20T00:07:28.470Z",
+            "updated": "2017-04-20T00:07:28.470Z"
+        }],
+        "description": null
+    }],
+    "updated": "2017-04-20T00:23:13.600Z",
+    "entities": [],
+    "language": "es",
+    "metadata": null,
+    "description": "",
+    "dialog_nodes": [{
+        "go_to": null,
+        "output": null,
+        "parent": null,
+        "context": null,
+        "created": "2017-04-20T00:13:25.257Z",
+        "updated": "2017-04-20T00:13:25.257Z",
+        "metadata": null,
+        "conditions": "anything_else",
+        "description": null,
+        "dialog_node": "node_2_1492647203032",
+        "previous_sibling": "node_5_1492647626616"
+    }, {
+        "go_to": null,
+        "output": {},
+        "parent": null,
+        "context": null,
+        "created": "2017-04-20T00:20:28.827Z",
+        "updated": "2017-04-20T00:21:00.367Z",
+        "metadata": null,
+        "conditions": "$XXX",
+        "description": null,
+        "dialog_node": "node_5_1492647626616",
+        "previous_sibling": "node_9_1492647743215"
+    }, {
+        "go_to": null,
+        "output": {
+            "text": {
+                "values": ["El ticket generado fue el 123123213"],
+                "selection_policy": "sequential"
+            }
+        },
+        "parent": "node_7_1492647680394",
+        "context": null,
+        "created": "2017-04-20T00:21:35.642Z",
+        "updated": "2017-04-20T00:21:50.106Z",
+        "metadata": null,
+        "conditions": "true",
+        "description": null,
+        "dialog_node": "node_8_1492647693441",
+        "previous_sibling": null
+    }, {
+        "go_to": null,
+        "output": {
+            "text": {
+                "values": ["HOLA"],
+                "selection_policy": "sequential"
+            }
+        },
+        "parent": null,
+        "context": null,
+        "created": "2017-04-20T00:13:02.975Z",
+        "updated": "2017-04-20T00:13:42.669Z",
+        "metadata": null,
+        "conditions": "conversation_start",
+        "description": null,
+        "dialog_node": "node_1_1492647180790",
+        "previous_sibling": null
+    }, {
+        "go_to": null,
+        "output": {
+            "text": {
+                "values": ["Procesando ticket..."],
+                "selection_policy": "sequential"
+            }
+        },
+        "parent": "node_5_1492647626616",
+        "context": null,
+        "created": "2017-04-20T00:21:02.119Z",
+        "updated": "2017-04-20T00:23:07.101Z",
+        "metadata": null,
+        "conditions": "true",
+        "description": null,
+        "dialog_node": "PROCESO TICKET",
+        "previous_sibling": null
+    }, {
+        "go_to": null,
+        "output": {
+            "text": {
+                "values": ["Retornando ticket..."],
+                "selection_policy": "sequential"
+            }
+        },
+        "parent": "PROCESO TICKET",
+        "context": null,
+        "created": "2017-04-20T00:21:22.611Z",
+        "updated": "2017-04-20T00:21:33.930Z",
+        "metadata": null,
+        "conditions": "true",
+        "description": null,
+        "dialog_node": "node_7_1492647680394",
+        "previous_sibling": null
+    }, {
+        "go_to": {
+            "return": null,
+            "selector": "condition",
+            "dialog_node": "PROCESO TICKET"
+        },
+        "output": {
+            "text": {
+                "values": ["La hora es 08:00 p.m."],
+                "selection_policy": "sequential"
+            }
+        },
+        "parent": null,
+        "context": null,
+        "created": "2017-04-20T00:22:25.413Z",
+        "updated": "2017-04-20T00:22:55.452Z",
+        "metadata": null,
+        "conditions": "#ver_hora",
+        "description": null,
+        "dialog_node": "node_9_1492647743215",
+        "previous_sibling": "node_1_1492647180790"
+    }, {
+        "go_to": {
+            "return": null,
+            "selector": "condition",
+            "dialog_node": "PROCESO TICKET"
+        },
+        "output": {
+            "text": {
+                "values": ["Ok, estoy generando un ticket..."],
+                "selection_policy": "sequential"
+            }
+        },
+        "parent": "node_1_1492647180790",
+        "context": null,
+        "created": "2017-04-20T00:13:55.882Z",
+        "updated": "2017-04-20T00:23:13.600Z",
+        "metadata": null,
+        "conditions": "#atender_ticket",
+        "description": null,
+        "dialog_node": "node_3_1492647233618",
+        "previous_sibling": null
+    }],
+    "workspace_id": "0570d2a9-98ff-4b01-aa93-834d354d8b86",
+    "counterexamples": []
+}
